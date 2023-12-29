@@ -2,6 +2,6 @@ package com.emi.practice.repository;
 
 import com.emi.practice.entity.Student;
 
-public interface IStudent {
-    void saveStudent(Student student);
+public interface StudentRepository {
+    void addStudent(Student student);
 }

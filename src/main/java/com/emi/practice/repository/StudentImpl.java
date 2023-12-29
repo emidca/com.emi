@@ -8,19 +8,19 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public class StudentImpl implements IStudent {
+public class StudentImpl implements StudentRepository{
 
     private EntityManager entityManager;
 
     @Autowired
-    public StudentImpl(EntityManager entityManager) {
+    public StudentImpl(EntityManager entityManager){
         this.entityManager = entityManager;
     }
 
-    @Transactional
+
     @Override
-    public void saveStudent(Student student) {
+    @Transactional
+    public void addStudent(Student student) {
         entityManager.persist(student);
     }
 }
-
