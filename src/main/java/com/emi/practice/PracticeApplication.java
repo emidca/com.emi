@@ -8,6 +8,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class PracticeApplication {
 
@@ -22,10 +24,19 @@ public class PracticeApplication {
 		return run -> {
 			//createStudent(studentRepository);
 			//findStudent(studentRepository);
+			getAll(studentRepository);
 
 
 		};
 	}
+
+	private void getAll(StudentRepository studentRepository) {
+		List<Student> students = studentRepository.findAll();
+		for(Student student : students){
+			System.out.println(student.toString());
+		}
+	}
+
 
 	private void findStudent(StudentRepository studentRepository) {
 		int id = 2;
