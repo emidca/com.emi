@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -33,6 +34,13 @@ public class StudentImpl implements StudentRepository{
     @Override
     public List<Student> findAll() {
         TypedQuery<Student> query = entityManager.createQuery("FROM Student",Student.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Student> findByIds(Integer... id) {
+        TypedQuery<Student> query = entityManager.createQuery("FROM Student s WHERE s.id IN :id", Student.class);
+        query.setParameter("id", Arrays.asList(id));
         return query.getResultList();
     }
 

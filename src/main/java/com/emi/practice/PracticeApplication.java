@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootApplication
@@ -24,11 +25,26 @@ public class PracticeApplication {
 		return run -> {
 			//createStudent(studentRepository);
 			//findStudent(studentRepository);
-			getAll(studentRepository);
+			//getAll(studentRepository);
+			findByManyIds(studentRepository);
+			
 
 
 		};
 	}
+
+	private void findByManyIds(StudentRepository studentRepository) {
+		try {
+
+			List<Student> studentsFromRepository = studentRepository.findByIds(3);
+
+			System.out.println(studentsFromRepository);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+
 
 	private void getAll(StudentRepository studentRepository) {
 		List<Student> students = studentRepository.findAll();
