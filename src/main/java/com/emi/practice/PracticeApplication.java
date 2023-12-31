@@ -28,10 +28,21 @@ public class PracticeApplication {
 			//getAll(studentRepository);
 			//findByManyIds(studentRepository);
 			//findByName(studentRepository);
-			findNames(studentRepository);
+			//findNames(studentRepository);
+			//removeStudent(studentRepository);
 
 			
 		};
+	}
+
+	private void removeStudent(StudentRepository studentRepository) {
+		try {
+			int id = 1;
+			studentRepository.removeStudent(id);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
 	}
 
 	private void findNames(StudentRepository studentRepository) {

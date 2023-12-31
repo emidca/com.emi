@@ -11,12 +11,12 @@ import java.util.Arrays;
 import java.util.List;
 
 @Repository
-public class StudentImpl implements StudentRepository{
+public class StudentImpl implements StudentRepository {
 
     private EntityManager entityManager;
 
     @Autowired
-    public StudentImpl(EntityManager entityManager){
+    public StudentImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
@@ -33,7 +33,7 @@ public class StudentImpl implements StudentRepository{
 
     @Override
     public List<Student> findAll() {
-        TypedQuery<Student> query = entityManager.createQuery("FROM Student",Student.class);
+        TypedQuery<Student> query = entityManager.createQuery("FROM Student", Student.class);
         return query.getResultList();
     }
 
@@ -46,7 +46,7 @@ public class StudentImpl implements StudentRepository{
 
     @Override
     public List<Student> findByName(String name) {
-        TypedQuery<Student> query = entityManager.createQuery("FROM Student WHERE firstName = :name",Student.class);
+        TypedQuery<Student> query = entityManager.createQuery("FROM Student WHERE firstName = :name", Student.class);
         query.setParameter("name", name);
         return query.getResultList();
     }
@@ -59,4 +59,20 @@ public class StudentImpl implements StudentRepository{
 
     }
 
+    @Override
+    @Transactional
+    public void removeStudent(int id) {
+        try {
+            Student student = entityManager.find(Student.class, id);
+            if (student != null) {
+                entityManager.remove(student);
+                System.out.println("Estudiante con id " + id + " eliminado con exito!");
+            } else {
+                System.out.println("Estudiante con ID " + id + " no encontrado.");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Error al eliminar al estudiante con ID " + id, e);
+        }
+    }
 }
+

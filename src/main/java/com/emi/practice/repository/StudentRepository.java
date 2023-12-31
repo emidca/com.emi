@@ -14,5 +14,7 @@ public interface StudentRepository {
 
     List<Student> findByNames(String... names);
 
+    void removeStudent(int id);
+
 
 }
