@@ -1,10 +1,8 @@
 package com.emi.practice.entity;
-
-
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "student_tracker")
+@Table(name = "student")
 public class Student {
 
     @Id
@@ -19,7 +17,6 @@ public class Student {
 
     @Column(name = "email")
     private String email;
-
 
     public Student() {
     }

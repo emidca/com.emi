@@ -1,8 +1,8 @@
 package com.emi.practice.repository;
 
-
 import com.emi.practice.entity.Student;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,10 +17,15 @@ public class StudentImpl implements StudentRepository{
         this.entityManager = entityManager;
     }
 
-
     @Override
     @Transactional
     public void addStudent(Student student) {
         entityManager.persist(student);
     }
+
+    @Override
+    public Student findStudentById(Integer id) {
+        return entityManager.find(Student.class, id);
+    }
+
 }
