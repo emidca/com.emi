@@ -16,5 +16,7 @@ public interface StudentRepository {
 
     void removeStudent(int id);
 
+    void removeAllStudent();
+
 
 }

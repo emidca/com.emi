@@ -30,9 +30,14 @@ public class PracticeApplication {
 			//findByName(studentRepository);
 			//findNames(studentRepository);
 			//removeStudent(studentRepository);
+			removeAllStudent(studentRepository);
 
 			
 		};
+	}
+
+	private void removeAllStudent(StudentRepository studentRepository) {
+		studentRepository.removeAllStudent();
 	}
 
 	private void removeStudent(StudentRepository studentRepository) {

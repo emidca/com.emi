@@ -2,6 +2,7 @@ package com.emi.practice.repository;
 
 import com.emi.practice.entity.Student;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -72,6 +73,18 @@ public class StudentImpl implements StudentRepository {
             }
         } catch (Exception e) {
             throw new RuntimeException("Error al eliminar al estudiante con ID " + id, e);
+        }
+    }
+
+    @Override
+    @Transactional
+    public void removeAllStudent() {
+        try {
+            Query nativeQuery = entityManager.createNativeQuery("TRUNCATE TABLE student");
+            nativeQuery.executeUpdate();
+            System.out.println("Success");
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }
