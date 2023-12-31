@@ -44,4 +44,11 @@ public class StudentImpl implements StudentRepository{
         return query.getResultList();
     }
 
+    @Override
+    public List<Student> findByName(String name) {
+        TypedQuery<Student> query = entityManager.createQuery("FROM Student WHERE firstName = :name",Student.class);
+        query.setParameter("name", name);
+        return query.getResultList();
+    }
+
 }

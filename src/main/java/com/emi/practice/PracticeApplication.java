@@ -26,11 +26,23 @@ public class PracticeApplication {
 			//createStudent(studentRepository);
 			//findStudent(studentRepository);
 			//getAll(studentRepository);
-			findByManyIds(studentRepository);
-			
+			//findByManyIds(studentRepository);
+			findByName(studentRepository);
 
 
 		};
+	}
+
+	private void findByName(StudentRepository studentRepository) {
+		try {
+
+			List<Student> name = studentRepository.findByName("ago");
+			System.out.println(name);
+
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
 	}
 
 	private void findByManyIds(StudentRepository studentRepository) {
