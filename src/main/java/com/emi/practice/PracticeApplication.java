@@ -30,7 +30,7 @@ public class PracticeApplication {
 			//findByName(studentRepository);
 			findNames(studentRepository);
 
-
+			
 		};
 	}
 
