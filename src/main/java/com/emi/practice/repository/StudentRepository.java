@@ -18,5 +18,9 @@ public interface StudentRepository {
 
     void removeAllStudent();
 
+    void updateStudentName(Integer id, String name);
+
+
+    
 
 }

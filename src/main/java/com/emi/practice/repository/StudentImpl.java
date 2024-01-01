@@ -87,5 +87,15 @@ public class StudentImpl implements StudentRepository {
             System.out.println(e.getMessage());
         }
     }
+
+    @Override
+    @Transactional
+    public void updateStudentName(Integer id, String name) {
+        Student theStudent = findStudentById(id);
+        theStudent.setFirstName(name);
+        entityManager.merge(theStudent);
+        System.out.println("The new name is: " + theStudent.getFirstName());
+    }
+
 }
 

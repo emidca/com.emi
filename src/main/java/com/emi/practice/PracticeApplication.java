@@ -30,10 +30,16 @@ public class PracticeApplication {
 			//findByName(studentRepository);
 			//findNames(studentRepository);
 			//removeStudent(studentRepository);
-			removeAllStudent(studentRepository);
+			//removeAllStudent(studentRepository);
+			//updateStudentName(studentRepository);
 
 			
 		};
+	}
+
+	private void updateStudentName(StudentRepository studentRepository) {
+		studentRepository.updateStudentName(6, "Colo");
+
 	}
 
 	private void removeAllStudent(StudentRepository studentRepository) {
@@ -105,6 +111,8 @@ public class PracticeApplication {
 
 	private void createStudent(StudentRepository studentRepository) {
 		Student student = new Student("Emi","Di", "emi@gmail.com");
+
+
 
 		System.out.println("Creating student...");
 		studentRepository.addStudent(student);
