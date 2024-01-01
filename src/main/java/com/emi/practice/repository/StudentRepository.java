@@ -20,7 +20,8 @@ public interface StudentRepository {
 
     void updateStudentName(Integer id, String name);
 
+    void removeMultipleStudents(Integer... studentsIds);
 
-    
+    List<Student> getAllStudents();
 
 }

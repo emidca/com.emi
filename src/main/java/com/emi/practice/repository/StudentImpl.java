@@ -1,6 +1,7 @@
 package com.emi.practice.repository;
 
 import com.emi.practice.entity.Student;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
@@ -95,6 +96,30 @@ public class StudentImpl implements StudentRepository {
         theStudent.setFirstName(name);
         entityManager.merge(theStudent);
         System.out.println("The new name is: " + theStudent.getFirstName());
+    }
+
+    @Override
+    @Transactional
+    public void removeMultipleStudents(Integer... studentsIDs) {
+        for (Integer id : studentsIDs) {
+            Student theStudent = entityManager.find(Student.class, id);
+            entityManager.remove(theStudent);
+            System.out.println("Success, the student is removed, ids: " + theStudent.getId());
+        }
+    }
+
+    @Override
+    public List<Student> getAllStudents() {
+        try {
+            TypedQuery<Student> query = entityManager.createQuery("FROM Student", Student.class);
+            List<Student> students = query.getResultList();
+            System.out.println(students.toString());
+
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
 }

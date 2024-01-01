@@ -32,9 +32,19 @@ public class PracticeApplication {
 			//removeStudent(studentRepository);
 			//removeAllStudent(studentRepository);
 			//updateStudentName(studentRepository);
+			//removeMultipleStudent(studentRepository);
+			//getAllStudents(studentRepository);
 
-			
+
 		};
+	}
+
+	private void getAllStudents(StudentRepository studentRepository) {
+		studentRepository.getAllStudents();
+	}
+
+	private void removeMultipleStudent(StudentRepository studentRepository) {
+		studentRepository.removeMultipleStudents(13,12,11);
 	}
 
 	private void updateStudentName(StudentRepository studentRepository) {
